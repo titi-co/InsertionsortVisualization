@@ -1,7 +1,9 @@
 let sequence = [];
-let barWidth = 15;
+let barWidth = 10;
 
 let states = [];
+
+let finished = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,12 +24,19 @@ async function bubbleSort(arr, n) {
 
     while (j >= 0 && arr[j] > key) {
       states[j] = 2;
-      await Promise.all([(arr[j + 1] = arr[j]), sleep(100)]);
+      await Promise.all([(arr[j + 1] = arr[j]), sleep(50)]);
       states[j] = 0;
       j--;
     }
     states[i] = 0;
     arr[j + 1] = key;
+  }
+
+  finished = true;
+  if (finished) {
+    for (let i = 0; i < n; i++) {
+      await Promise.all([(states[i] = 1), sleep(25)]);
+    }
   }
 }
 
