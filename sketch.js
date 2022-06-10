@@ -32,11 +32,8 @@ async function bubbleSort(arr, n) {
     arr[j + 1] = key;
   }
 
-  finished = true;
-  if (finished) {
-    for (let i = 0; i < n; i++) {
-      await Promise.all([(states[i] = 1), sleep(25)]);
-    }
+  for (let i = 0; i < n; i++) {
+    await Promise.all([(states[i] = 1), sleep(25)]);
   }
 }
 
